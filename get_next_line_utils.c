@@ -3,31 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: feli-bar <feli-bar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:41 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/09/28 16:54:31 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/09/29 21:36:23 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	ft_calloc(size_t nmemb, size_t size)
+size_t	ft_strlen(const char *s)
 {
-	void	*result;
-	size_t	ovflow;
 	size_t	i;
-	
-	
+
 	i = 0;
-	ovflow = nmemb * size;
-	result = (void *) malloc (nmemb * size);
-	if (ovflow / nmemb != size || ovflow / size != nmemb || (!result))
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*str;
+	size_t	len;
+	size_t	i;
+
+	if (!s1 || !s2)
 		return (NULL);
-	while (i < size)
+	i = 0;
+	len = ft_strlen(s1) + ft_strlen(s2);
+	str = (char *) malloc((len + 1) * sizeof(char));
+	if (str == NULL)
+		return (NULL);
+	while (i < ft_strlen(s1))
 	{
-		((char *)s)[i] = '\0';
+		str[i] = s1[i];
 		i++;
 	}
+	i = 0;
+	while (i < ft_strlen(s2))
+	{
+		str[ft_strlen(s1) + i] = s2[i];
+		i++;
+	}	
+	str[len] = '\0';
+	return (str);
 }
 

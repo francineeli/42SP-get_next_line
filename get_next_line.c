@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:14 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/09/29 22:20:21 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/09/29 23:18:02 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,21 @@ char	*ft_get_next_line(const char *str)
 char	ft_read_line(int fd, char *str)
 {
 	char 	*buf;
-	int		k;
+	int		ret;
 	
 	buf = malloc(sizeof * buf * (BUFFER_SIZE + 1));
 	if (!buf)
 		return ;
+	ret = 1;
 	while (!ft_strchr(str, '\n'));
 	{
-		k = read(fd, buf, BUFFER_SIZE);
-		if (k == -1) - pesquisar numeros reservados read
+		buf = read(fd, buf, BUFFER_SIZE);
+		if (ret == -1) - pesquisar numeros reservados read
 		(
 			free (buf);
 			return (str);
 		)
-		buf[k] = '\0';
+		buf[ret] = '\0';
 		str = ft_strjoin(str, buf);
 		if (!str)
 		{

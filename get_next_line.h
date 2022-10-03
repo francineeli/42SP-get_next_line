@@ -6,13 +6,12 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:28:39 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/03 18:37:22 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/03 19:09:04 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H 
 # define GET_NEXT_LINE_H
-
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>

@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:14 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/03 18:48:00 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/03 19:16:58 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ char	ft_read_line(int fd, char *str)
 		return ;
 	ret = 1;
 	//here the ft_strchr function was used to find the first '\n' of the file to stop the loop
-	while (!ft_strchr(str, '\n'));
+	while (!ft_strchr(str, '\n'))
 	{
 		buf = read(fd, buf, BUFFER_SIZE);
 		//error handling, stop the reading and return the string
 		if (ret == -1)
-		(
+		{
 			free (buf);
-			return (str);
-		)
+			return (*str);
+		}	
 		//end of the string
 		buf[ret] = '\0';
 		//parameter receives str + buf read from fd
@@ -52,7 +52,7 @@ char	ft_read_line(int fd, char *str)
 		}		
 	}
 	free (buf);
-	return (str);
+	return (*str);
 }
 //Function to get the first line to return
 char	*ft_get_first_line(const char *str)
@@ -62,23 +62,23 @@ char	*ft_get_first_line(const char *str)
 	
 	//to loop through the string
 	i = 0;
-	while (s[i] != '\0' && s[i] != '\n')
+	while (str[i] != '\0' && str[i] != '\n')
 		i++;
-	if (s[i] == '\n')
+	if (str[i] == '\n')
 		i++;
-	result = (char *)malloc (sizeof(char)) * (i + 1);
+	result = malloc (sizeof(char)) * (i + 1);
 	//allocation failure handling
 	if (!result)
 		return (NULL);
 	//assigning values ​​to the result variable	
 	i = 0;
-	while (s[i] != '\0' && s[i] != '\n')
+	while (str[i] != '\0' && str[i] != '\n')
 	{
-		result[i++] = s[i];
+		result[i++] = str[i];
 	}
-	if (s[i] == '\n')
+	if (str[i] == '\n')
 	{
-		result[i++] = s[i]
+		result[i++] = str[i]
 	}
 	result[i] = '\0';
 	return (result);

@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:41 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/09/29 21:36:23 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:16:37 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,21 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
 
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == (char) c)
+			return ((void *) s + i);
+		i++;
+	}
+	if (c == '\0')
+		return ((void *) s + i);
+	return (0);
+}
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;

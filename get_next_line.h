@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:28:39 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/09/29 22:25:35 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:37:22 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,13 @@
 # define BUFFER_SIZE 1
 # endif
 
+/*----------GNL----------*/
+char	ft_read_line(int fd, char *str);
+char	*ft_get_first_line(const char *str);
+char	*ft_get_next_lines(const char *str);
+char	*get_next_line(int fd);
+
+/*----------UTILS----------*/
+size_t	ft_strlen(const char *s);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char const *s1, char const *s2);

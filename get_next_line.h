@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:28:39 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/03 19:09:04 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/03 21:46:18 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # endif
 
 /*----------GNL----------*/
-char	ft_read_line(int fd, char *str);
+char	*ft_read_line(int fd, char *str);
 char	*ft_get_first_line(const char *str);
 char	*ft_get_next_lines(const char *str);
 char	*get_next_line(int fd);

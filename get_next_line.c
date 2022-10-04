@@ -6,14 +6,14 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:14 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/04 13:22:29 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/04 20:28:28 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h" 
 
 char	*ft_read_line(int fd, char *str);
-char	*ft_check_first_line(const char *str);
+char	*ft_check_first_line(char *str);
 char	*ft_check_next_line(char *str);
 char	*get_next_line(int fd);
 
@@ -44,7 +44,7 @@ char	*ft_read_line(int fd, char *str)
 	return (str);
 }
 
-char	*ft_check_first_line(const char *str)
+char	*ft_check_first_line(char *str)
 {
 	char	*result;
 	size_t	i;

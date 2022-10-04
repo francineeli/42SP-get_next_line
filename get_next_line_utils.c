@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:41 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/04 20:29:16 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/04 20:33:11 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*ft_strchr(char *str, int c)
 
 char	*ft_strjoin(char *str1, char *str2)
 {
-	char	*result;
+	char	*result = NULL;
 	
 	if (!result)
 	{

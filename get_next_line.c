@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:14 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/04 17:10:28 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/04 17:18:10 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ char	*ft_check_next_line(char *str)
 
 char	*get_next_line(int fd)
 {
-	char		*str;
+	char		*str = NULL;
 	static char	*result;
 	
 	if (fd < 0 || BUFFER_SIZE <= 0)

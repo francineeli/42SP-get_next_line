@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:14 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/04 17:18:10 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/04 13:22:29 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*ft_check_first_line(const char *str)
 		i++;
 	if (str[i] == '\n')
 		i++;
-	result = ft_calloc(i, sizeof(result));
+	result = ft_calloc(i, sizeof * result);
 	if (!result)
 		return (NULL);
 	i = 0;
@@ -85,7 +85,7 @@ char	*ft_check_next_line(char *str)
 		i++;	
 	if (str[i] != '\0' && str[i] == '\n')
 		i++;
-	new_result = ft_calloc((j - i) + 1, sizeof(new_result));
+	new_result = ft_calloc((j - i) + 1, sizeof * new_result);
 	if (!new_result)
 		return (NULL);
 	while (str[i + j])
@@ -99,7 +99,7 @@ char	*ft_check_next_line(char *str)
 
 char	*get_next_line(int fd)
 {
-	char		*str = NULL;
+	char		*str;
 	static char	*result;
 	
 	if (fd < 0 || BUFFER_SIZE <= 0)

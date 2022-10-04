@@ -6,20 +6,20 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:41 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/04 14:06:45 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/04 18:58:33 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *s)
+size_t	ft_strlen(char *str)
 {
 	size_t	i;
 
 	i = 0;
-	if (s)
+	if (str)
 	{
-		while (s[i])
+		while (str[i])
 			i++;
 		return (i);
 	}
@@ -29,16 +29,16 @@ size_t	ft_strlen(char *s)
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*result;
-	size_t	ovflow;
+	size_t	total;
+	size_t	i;
 
-	ovflow = nmemb * size;
-	result = (void *)malloc (nmemb * size);
-	if (ovflow / nmemb != size || ovflow / size != nmemb || (!result))
+	total = nmemb * size;
+	result = (void *) malloc (total);
+	if (total / nmemb != size || total / size != nmemb || (!result))
 		return (NULL);
-	ft_bzero (result, ovflow);
+	ft_bzero (result, total);
 	return (result);
 }
-
 void	ft_bzero(void *s, size_t n)
 {
 	size_t	i;
@@ -50,54 +50,59 @@ void	ft_bzero(void *s, size_t n)
 		i++;
 	}
 }
-char	*ft_strchr(char *s, int c)
+char	*ft_strchr(char *str, int c)
 {
 	int	i;
 	const char *result;
 
 	i = 0;
 	result = 0;
-	if (s)
+	if (str)
 	{
-		while (s[i])
+		while (str[i])
 		{
-			if (s[i] == (char) c)
+			if (str[i] == (char) c)
 			{
-				result = &s[i];
-				return ((char *) s + i);
+				result = &str[i];
+				return ((char *) str + i);
 			}
 			i++;
 		}
-			if (c == 0)
-				result = (s + ft_strlen(s));
-			return ((char *) result);
+	if (c == 0)
+	result = (str + ft_strlen(str));
+	return ((char *) result);
 	}
 	return (NULL);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *str1, char *str2)
 {
-	char	*str;
+	char	*result;
 	size_t	i;
-
-	if (!s1 || !s2)
+	
+	if (!result)
+	{
+		result = malloc(1 * sizeof(char));
+		result[0] = '\0';
+	}	
+	if (!str1 || !str2)
 		return (NULL);
 	i = 0;
-	str = ft_calloc(sizeof(char), ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!str)
+	result = ft_calloc(sizeof(char), ft_strlen(str1) + ft_strlen(str2) + 1);
+	if (!result)
 		return (NULL);
-	while (i < ft_strlen(s1))
+	while (i < ft_strlen(str1))
 	{
-		str[i] = s1[i];
+		result[i] = str1[i];
 		i++;
 	}
 	i = 0;
-	while (i < ft_strlen(s2))
+	while (i < ft_strlen(str2))
 	{
-		str[ft_strlen(s1) + i] = s2[i];
+		result[ft_strlen(str1) + i] = str2[i];
 		i++;
 	}	
-	*(str + ft_strlen(s1) + ft_strlen(s2)) = '\0';
-	return (str);
+	*(result + ft_strlen(str1) + ft_strlen(str2)) = '\0';
+	return (result);
 }
 

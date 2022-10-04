@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:41 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/04 20:33:11 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/04 21:55:48 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,20 +73,33 @@ char	*ft_strchr(char *str, int c)
 char	*ft_strjoin(char *str1, char *str2)
 {
 	char	*result = NULL;
+	size_t 	i;
 	
-	if (!result)
-	{
-		result = malloc(1 * sizeof(char));
-		result[0] = '\0';
-	}	
+	// if (!result)
+	// 	{
+	// 	result = malloc(1 * sizeof(char));
+	// 	result[0] = '\0';
+	// 	}	
+	i = 0;
 	if (!str1 || !str2)
 		return (NULL);
 	result = ft_calloc(sizeof(char), ft_strlen(str1) + ft_strlen(str2) + 1);
 	if (!result)
 		return (NULL);
-	ft_strcat(result, str1);
+	ft_strcat(result, str1);		
 	ft_strcat(result, str2);	
-	*(result + ft_strlen(str1) + ft_strlen(str2)) = '\0';
+	// while (i < ft_strlen(str1))
+	// {
+	// 	result[i] = str1[i];
+	// 	i++;
+	// }
+	// i = 0;
+	// while (i < ft_strlen(str2))
+	// {
+	// 	result[ft_strlen(str1) + i] = str2[i];
+	// 	i++;
+	// }	
+	*(result + ft_strlen(str1) + ft_strlen(str2) + 1) = '\0';
 	free (result);
 	return (result);
 }
@@ -99,7 +112,7 @@ void ft_strcat(char *dst, char *src)
 	size = ft_strlen(dst);
 	if (src)
 	{
-		while(src[inc])	
+		while(src[inc] != '\0')	
 		{
 			dst[size + inc + 1] = src[inc];
 			inc++;

@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:14 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/04 20:33:36 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/04 21:43:31 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,6 @@ char	*ft_read_line(int fd, char *str);
 char	*ft_check_first_line(char *str);
 char	*ft_check_next_line(char *str);
 char	*get_next_line(int fd);
-
-char	*ft_read_line(int fd, char *str)
-{
-	char 	*buf;
-	int		ret; 
-	
-	buf = malloc(BUFFER_SIZE + 1);
-	ret = 0;
-	while (!ft_strchr(str, '\n'))
-	{
-		ret = read (fd, buf, BUFFER_SIZE);
-		if (ret <= 0)
-		{
-			free (buf);
-			return (str);
-		}	
-		buf[ret] = '\0';
-		str = ft_strjoin(str, buf);
-		if (!str)
-		{
-			free (buf);
-			return (NULL);
-		}		
-	}
-	free (buf);
-	return (str);
-}
 
 char	*ft_check_first_line(char *str)
 {
@@ -97,9 +70,37 @@ char	*ft_check_next_line(char *str)
 	return (new_result);
 }
 
+char	*ft_read_line(int fd, char *str)
+{
+	char 	*buf;
+	int		ret; 
+	
+	buf = malloc(BUFFER_SIZE + 1);
+	ret = 0;
+	while (!ft_strchr(str, '\n'))
+	{
+		ret = read (fd, buf, BUFFER_SIZE);
+		if (ret <= 0)
+		{
+			free (buf);
+			return (str);
+		}	
+		buf[ret] = '\0';
+		str = ft_strjoin(str, buf);
+		if (!str)
+		{
+			free (buf);
+			return (NULL);
+		}		
+	}
+	free (buf);
+	return (str);
+}
+
+
 char	*get_next_line(int fd)
 {
-	char		*str = NULL;
+	char	*str;
 	static char	*result;
 	
 	if (fd < 0 || BUFFER_SIZE <= 0)
@@ -107,7 +108,7 @@ char	*get_next_line(int fd)
 	str = ft_read_line(fd, str);
 	if (!ft_strlen(str))
 	{
-		free (str);
+		free (result);
 		return (NULL);
 	}
 	else

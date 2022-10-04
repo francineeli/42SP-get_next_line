@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:41 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/03 21:21:24 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/04 17:04:12 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,33 @@ size_t	ft_strlen(const char *s)
 
 	i = 0;
 	while (s[i] != '\0')
-		i++;
+	i++;
 	return (i);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*result;
+	size_t	ovflow;
+
+	ovflow = nmemb * size;
+	result = (void *) malloc (nmemb * size);
+	if (ovflow / nmemb != size || ovflow / size != nmemb || (!result))
+		return (NULL);
+	ft_bzero (result, ovflow);
+	return (result);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((char *) s)[i] = '\0';
+		i++;
+	}
 }
 char	*ft_strchr(const char *s, int c)
 {
@@ -36,6 +61,7 @@ char	*ft_strchr(const char *s, int c)
 		return ((void *) s + i);
 	return (0);
 }
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
@@ -46,7 +72,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	i = 0;
 	len = ft_strlen(s1) + ft_strlen(s2);
-	str = (char *) malloc((len + 1) * sizeof(char));
+	str = (char *) malloc((len + 1) * sizeof(str));
 	if (str == NULL)
 		return (NULL);
 	while (i < ft_strlen(s1))

@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:28:39 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/04 20:13:27 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/05 11:08:57 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ char	*ft_read_line(int fd, char *str);
 char	*ft_get_first_line(char *str);
 char	*ft_get_next_line(char *str);
 char	*get_next_line(int fd);
+char	*ft_strchr(char *str, int c);
 
 /*----------UTILS----------*/
-size_t	ft_strlen(char *str);
-char	*ft_strchr(char *s, int c);
-char	*ft_strjoin(char *s1, char *s2);
-void 	ft_strcat(char *dst, char *src);
-void	*ft_calloc(size_t nmemb, size_t size);
+size_t	ft_strlen(const char *str);
+size_t	ft_strlcat(char *dst, char *src, size_t dstsize);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+char	*ft_strdup(const char *src);
+char	*ft_strjoin(char *str1, char *str2);

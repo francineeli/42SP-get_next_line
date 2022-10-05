@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:14 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/05 20:07:23 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/05 20:09:54 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char	*ft_strchr(char *str, int c)
 	int	i;
 	char	*find;
 	
+	find = 0;
 	i = 0;
 	if (str)
 	{

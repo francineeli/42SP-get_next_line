@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 23:02:22 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/05 13:18:03 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/05 21:04:15 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "get_next_line.h"
 
-int	main(int argc, char **argv)
+int	main(int argc, char ** argv)
 {
 	int	fd;
 	char	*line;

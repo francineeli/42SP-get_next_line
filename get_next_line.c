@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:14 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/05 20:14:19 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/05 21:44:58 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*ft_check_first_line(char *str)
 
 char	*ft_check_next_line(char *str)
 {
-	char	*cknewstr;
+	char	*newstr;
 	size_t	i;
 	size_t	j;
 
@@ -80,19 +80,19 @@ char	*ft_check_next_line(char *str)
 		free(str);
 		return (NULL);
 	}
-	cknewstr = malloc(sizeof(char) * ft_strlen(str) - i + 1);
-	if (cknewstr == NULL)
+	newstr = malloc(sizeof(char) * ft_strlen(str) - i + 1);
+	if (newstr == NULL)
 		return (NULL);
 	i++;
 	j = 0;
 	while (str[i + j] != '\0')
 	{
-		cknewstr[j] = str[i + j];
+		newstr[j] = str[i + j];
 		j++;
 	}			
-	cknewstr[j] = '\0';			
+	newstr[j] = '\0';			
 	free (str);
-	return (cknewstr);
+	return (newstr);
 }
 
 char	*ft_read_line(int fd, char *str)

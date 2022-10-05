@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:14 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/05 19:42:38 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/05 19:47:52 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*get_next_line(int fd);
 char	*ft_strchr(char *str, int c)
 {
 	int	i;
-	const char *chrfind;
+	const char *find = NULL;
 
 	i = 0;
 	if (str)
@@ -29,14 +29,14 @@ char	*ft_strchr(char *str, int c)
 		{
 			if (str[i] == (char) c)
 			{
-				chrfind = &str[i];
+				find = &str[i];
 				return ((char *) str + i);
 			}
 			i++;
 		}
 		if (c == 0)
-			chrfind = (str + ft_strlen(str));
-		return ((char *) chrfind);
+			find = (str + ft_strlen(str));
+		return ((char *) find);
 	}
 	return (NULL);
 }
@@ -128,7 +128,7 @@ char	*ft_read_line(int fd, char *str)
 
 char	*get_next_line(int fd)
 {
-	char	*str;
+	char	*str = NULL;
 	static char	*result;
 	
 	if (fd < 0 || BUFFER_SIZE <= 0)

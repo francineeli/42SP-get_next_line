@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:14 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/05 11:02:11 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/05 11:33:15 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ char	*ft_check_next_line(char *str)
 char	*ft_read_line(int fd, char *str)
 {
 	char 	*buf;
-	size_t	ret; 
+	ssize_t	ret; 
 	
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (buf == NULL)
@@ -108,7 +108,7 @@ char	*ft_read_line(int fd, char *str)
 	while (!ft_strchr(str, '\n'))
 	{
 		ret = read (fd, buf, BUFFER_SIZE);
-		if (ret <= 0)
+		if (ret < 0)
 		{
 			free (buf);
 			return (str);
@@ -129,7 +129,7 @@ char	*ft_read_line(int fd, char *str)
 
 char	*get_next_line(int fd)
 {
-	char	*str;
+	char	*str = NULL;
 	static char	*result;
 	
 	if (fd < 0 || BUFFER_SIZE <= 0)

@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:14 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/06 21:40:43 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/06 21:51:42 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,29 +44,50 @@ char	*ft_check_first_line(char *str)
 	return (strcheck);
 }
 
+// char	*ft_check_next_line(char *str)
+// {
+// 	char	*newstr;
+// 	size_t	i;
+// 	size_t	j;
+
+// 	i = 0;
+// 	j = 0;
+// 	if (!str)
+// 		return (NULL); 
+// 	while (str[i] != '\n' && str[i] != '\0')
+// 		i++;	
+// 	if (str[i] == '\n')
+// 		i++;
+// 	newstr = malloc(sizeof(char) * (ft_strlen(str) - i + 1));
+// 	if (!newstr)
+// 		return (NULL);
+// 	while (str[i + j])
+// 	{
+// 		newstr[j] = str[i + j];
+// 		j++;
+// 	}			
+// 	newstr[j] = '\0';			
+// 	free (str);
+// 	return (newstr);
+// }
 char	*ft_check_next_line(char *str)
 {
 	char	*newstr;
-	size_t	i;
-	size_t	j;
+	size_t	size;
 
-	i = 0;
-	j = 0;
-	if (!str)
-		return (NULL); 
-	while (str[i] != '\n' && str[i] != '\0')
-		i++;	
-	if (str[i] == '\n')
-		i++;
-	newstr = malloc(sizeof(char) * (ft_strlen(str) - i + 1));
+	size = 0;
+	while (str[size] && str[size] != '\0')
+		size++;
+	if (!str[size])
+	{
+		free(str);
+		return (NULL);
+	}
+	newstr = malloc(sizeof(char) * (ft_strlen(str) - size + 1));
 	if (!newstr)
 		return (NULL);
-	while (str[i + j])
-	{
-		newstr[j] = str[i + j];
-		j++;
-	}			
-	newstr[j] = '\0';			
+	ft_strlcpy(newstr, &str[size + 1], ft_strlen(&str[size + 1] + 1));		
+	newstr[size] = '\0';			
 	free (str);
 	return (newstr);
 }

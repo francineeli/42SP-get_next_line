@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:41 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/06 21:22:16 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/06 21:48:21 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,23 +61,23 @@ char	*ft_strchr(char *str, int c)
 // 	return (dst_len + src_len);
 // }
 
-// size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
-// {
-// 	size_t	i;
+size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
+{
+	size_t	i;
 	
-// 	i = 0;
-// 	if (dstsize <= 0)
-// 	{
-// 		return (ft_strlen(src));
-// 	}
-// 	while (src[i] != '\0' && i < dstsize -1)
-// 	{
-// 		((char *)dst)[i] = ((char *)src)[i];
-// 		i++;
-// 	}
-// 	dst[i] = '\0';
-// 	return (ft_strlen(src));	
-// }
+	i = 0;
+	if (dstsize <= 0)
+	{
+		return (ft_strlen(src));
+	}
+	while (src[i] != '\0' && i < dstsize -1)
+	{
+		((char *)dst)[i] = ((char *)src)[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (ft_strlen(src));	
+}
 
 // char	*ft_strdup(char *src)
 // {

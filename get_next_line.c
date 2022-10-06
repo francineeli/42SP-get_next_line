@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:14 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/06 19:23:29 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:47:42 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,10 @@ char	*ft_read_line(int fd, char *str)
 	while (!ft_strchr(str, '\n'))
 	{
 		t = read (fd, buf, BUFFER_SIZE);
-		printf("%d\n", t);
 		if (t <= 0)
 		{
 			free (buf);
-			return (str);
+			return (NULL);
 		}
 		buf[t] = '\0';
 		str = ft_strjoin(str, buf);
@@ -111,7 +110,8 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	result = ft_read_line(fd, result);
-	if (result != NULL && *result != '\0')
+	if (result == NULL)
+		return (NULL);
 	str = ft_check_first_line(result);
 	result = ft_check_next_line(result);
 	if (!result)

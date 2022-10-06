@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:14 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/05 21:44:58 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:23:29 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,6 @@ char	*ft_read_line(int fd, char *str);
 char	*ft_check_first_line(char *str);
 char	*ft_check_next_line(char *str);
 char	*get_next_line(int fd);
-
-char	*ft_strchr(char *str, int c)
-{
-	int	i;
-	char	*find;
-	
-	i = 0;
-	if (str)
-	{
-		while (str[i])
-		{
-			if (str[i] == (char) c)
-			{
-				find = &str[i];
-				return ((char *) find);
-			}
-			i++;
-		}
-		if (c == 0)
-			find = (str + ft_strlen(str));
-		return ((char *) find);
-	}
-	return (NULL);
-}
 
 char	*ft_check_first_line(char *str)
 {
@@ -52,7 +28,7 @@ char	*ft_check_first_line(char *str)
 	while (str[i] != '\0' && str[i] != '\n')
 		i++;
 	strcheck = malloc(sizeof(char) * (i + str[i] == '\n' + 1));
-	if (strcheck == NULL)
+	if (!strcheck)
 		return (NULL);
 	i = 0;
 	while (str[i] != '\0' && str[i] != '\n')
@@ -75,15 +51,11 @@ char	*ft_check_next_line(char *str)
 	i = 0; 
 	while (str[i] != '\0' && str[i] != '\n')
 		i++;	
-	if (str[i] == '\0')
-	{
-		free(str);
-		return (NULL);
-	}
 	newstr = malloc(sizeof(char) * ft_strlen(str) - i + 1);
-	if (newstr == NULL)
+	if (!newstr)
 		return (NULL);
-	i++;
+	if (str[i] == '\n')
+		i++;
 	j = 0;
 	while (str[i + j] != '\0')
 	{
@@ -91,22 +63,23 @@ char	*ft_check_next_line(char *str)
 		j++;
 	}			
 	newstr[j] = '\0';			
-	free (str);
+	if (str)
+		free (str);
 	return (newstr);
 }
 
 char	*ft_read_line(int fd, char *str)
 {
 	char 	*buf;
-	ssize_t	t; 
+	int		t; 
 	
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (buf == NULL)
 		return (NULL);
-	t = 1;
 	while (!ft_strchr(str, '\n'))
 	{
 		t = read (fd, buf, BUFFER_SIZE);
+		printf("%d\n", t);
 		if (t <= 0)
 		{
 			free (buf);
@@ -122,7 +95,10 @@ char	*ft_read_line(int fd, char *str)
 	}
 	free (buf);
 	if (t == -1)
+	{
+		free (str);
 		return (NULL);
+	}
 	return (str);
 }
 
@@ -131,13 +107,15 @@ char	*get_next_line(int fd)
 	char	*str;
 	static char	*result;
 	
+	str = "\0";
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	str = ft_read_line(fd, str);
-	result = ft_check_first_line(str);
-	if (result == NULL)
+	result = ft_read_line(fd, result);
+	if (result != NULL && *result != '\0')
+	str = ft_check_first_line(result);
+	result = ft_check_next_line(result);
+	if (!result)
 		return (NULL);
-	str = ft_check_next_line(str);
-	return (result);
+	return (str);
 }
 

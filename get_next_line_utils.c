@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:41 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/05 21:46:28 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:06:40 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,31 @@ size_t	ft_strlen(char *str)
 	i = 0;
 	if (str)
 	{
-		while (str[i])
+		while (str[i] != '\0')
 			i++;
-		return (i);
+	}
+	return (i);
+}
+char	*ft_strchr(char *str, int c)
+{
+	int	i;
+
+	i = 0;
+	if (str)
+	{
+		while (str[i] != '\0')
+		{
+			if (str[i] == (char) c)
+				return ((char *) str + i);
+			i++;
+		}
+		if (c == '\0')
+			return ((char *) str + i);
+		return (0);
 	}
 	return (0);
 }
+
 size_t	ft_strlcat(char *dst, char *src, size_t dstsize)
 {
 	size_t	src_len;
@@ -32,23 +51,17 @@ size_t	ft_strlcat(char *dst, char *src, size_t dstsize)
 	size_t	i;
 
 	src_len = ft_strlen(src);
-	if (dst == NULL && dstsize == 0)
-		return (src_len);
 	dst_len = ft_strlen(dst);
-	if (dstsize == 0)
-		return (src_len);
-	if (dst_len < dstsize)
+	i = 0;
+	if (dstsize <= dst_len)
+		return (src_len + dstsize);
+	while (src[i] != '\0' && i < (dstsize - dst_len - 1))
 	{
-		i = 0;	
-		while (src[i] != '\0' && i < dstsize - dst_len - 1)
-		{
-			dst[dst_len + i] = src[i];
-			i++;
-		}
-		dst[dst_len + i] = '\0';
-		return (src_len + dst_len);
+		dst[dst_len + i] = src[i];
+		i++;
 	}
-	return (src_len + dstsize);
+	dst[dst_len + i] = '\0';
+	return (dst_len + src_len);
 }
 
 size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
@@ -63,7 +76,7 @@ size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
 			dst[i] = src[i];
 			i++;
 		}
-		dst[i] = '\0';
+		//dst[i] = " ";
 	}	
 	return (ft_strlen(src));	
 }
@@ -86,16 +99,16 @@ char	*ft_strjoin(char *str1, char *str2)
 	size_t 	size;
 	
 	size = ft_strlen(str1) + ft_strlen(str2) + 1;
-	finalstr = malloc(sizeof(size));
-	if (str1 == NULL && str2 == NULL)
+	finalstr = malloc(size);
+	if (!str1 && !str2)
 		return (NULL);
-	if (str1 == NULL)
+	if (!str1)
 		return (ft_strdup(str2));
-	if (str2 == NULL)
-		return (ft_strdup(str1));	
-	if (finalstr == NULL)
-		return (NULL);
-	ft_strlcpy(finalstr, str1, ft_strlen(str1));
-	ft_strlcat (finalstr, str2, size + 1);
+	if (!str2)
+		return (ft_strdup(str1));
+	if (!finalstr)
+		return (NULL);	
+	ft_strlcpy(finalstr, str1, size);
+	ft_strlcat (finalstr, str2, size);
 	return (finalstr);
 }

@@ -25,15 +25,12 @@
 # endif
 
 /*----------GNL----------*/
+char	*ft_alloc_first_line(char *str);
+char	*ft_alloc_next_line(char *str);
 char	*ft_read_line(int fd, char *str);
-char	*ft_get_first_line(char *str);
-char	*ft_get_next_line(char *str);
 char	*get_next_line(int fd);
-char	*ft_strchr(char *str, int c);
 
 /*----------UTILS----------*/
 size_t	ft_strlen(char *str);
-size_t	ft_strlcat(char *dst, char *src, size_t dstsize);
-size_t	ft_strlcpy(char *dst, char *src, size_t dstsize);
-char	*ft_strdup(char *src);
+char	*ft_strchr(char *str, int c);
 char	*ft_strjoin(char *str1, char *str2);

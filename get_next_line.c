@@ -29,7 +29,7 @@ char	*ft_alloc_first_line(char *str)
 		i++;
 	if (str[i] == '\n')
 		i++;
-	strcheck = malloc(sizeof(char) * (i + str[i] == '\n' + 1));
+	strcheck = malloc(i + 2);
 	if (!strcheck)
 		return (NULL);
 	i = 0;
@@ -76,7 +76,7 @@ char	*ft_read_line(int fd, char *str)
 	char	*buf;
 	int		i;
 
-	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
 		return (NULL);
 	while (!ft_strchr(str, '\n'))

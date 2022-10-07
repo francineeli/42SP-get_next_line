@@ -51,7 +51,7 @@ char	*ft_strchr(char *str, int c)
 
 char	*ft_strjoin(char *str1, char *str2)
 {
-	char	*newstr;
+	char	*newstr=NULL;
 	size_t	len1;
 	size_t	len2;
 

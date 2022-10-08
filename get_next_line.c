@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:26:14 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/06 21:51:42 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/09 00:05:53 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_alloc_first_line(char *str)
 		i++;
 	if (str[i] == '\n')
 		i++;
-	strcheck = malloc(i + 2);
+	strcheck = malloc(i + 1);
 	if (!strcheck)
 		return (NULL);
 	i = 0;
@@ -77,15 +77,15 @@ char	*ft_read_line(int fd, char *str)
 	int		i;
 
 	buf = malloc(BUFFER_SIZE + 1);
-	if (!buf)
-		return (NULL);
+	// if (!buf)
+	// 	return (NULL);
 	while (!ft_strchr(str, '\n'))
 	{
 		i = read (fd, buf, BUFFER_SIZE);
 		if (i <= 0)
 		{
 			free (buf);
-			return (NULL);
+			return (str);
 		}
 		buf[i] = '\0';
 		str = ft_strjoin(str, buf);
@@ -104,7 +104,7 @@ char	*get_next_line(int fd)
 	static char	*finalstr;
 	char		*str_read;
 
-	str_read = "\0";
+	str_read = "";
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	finalstr = ft_read_line(fd, finalstr);

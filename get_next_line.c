@@ -20,12 +20,12 @@ char	*get_next_line(int fd);
 char	*ft_alloc_first_line(char *str)
 {
 	char	*strcheck;
-	size_t	i;
+	int		i;
 
 	i = 0;
-	if (str[i] == '\0')
+	if (!str)
 		return (NULL);
-	while (str[i] && str[i] != '\n')
+	while (str[i] != '\n' && str[i] != '\0')
 		i++;
 	if (str[i] == '\n')
 		i++;
@@ -33,7 +33,7 @@ char	*ft_alloc_first_line(char *str)
 	if (!strcheck)
 		return (NULL);
 	i = 0;
-	while (str[i] && str[i] != '\n')
+	while (str[i] != '\n' && str[i] != '\0')
 	{
 		strcheck[i] = str[i];
 		i++;
@@ -77,8 +77,6 @@ char	*ft_read_line(int fd, char *str)
 	int		i;
 
 	buf = malloc(BUFFER_SIZE + 1);
-	// if (!buf)
-	// 	return (NULL);
 	while (!ft_strchr(str, '\n'))
 	{
 		i = read (fd, buf, BUFFER_SIZE);
@@ -108,10 +106,16 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	finalstr = ft_read_line(fd, finalstr);
-	if (!finalstr)
+	if (!ft_strlen(finalstr))
+	{
+		free(finalstr);
 		return (NULL);
-	str_read = ft_alloc_first_line(finalstr);
-	finalstr = ft_alloc_next_line(finalstr);
+	}
+	else
+	{
+		str_read = ft_alloc_first_line(finalstr);
+		finalstr = ft_alloc_next_line(finalstr);
+	}
 	if (!finalstr)
 		return (NULL);
 	return (str_read);

@@ -38,8 +38,10 @@ char	*ft_strchr(char *str, int c)
 		while (str[i])
 		{
 			if (str[i] == (char) c)
+			{
 				find = (str + i);
-			return ((char *) str + i);
+				return ((char *) str + i);
+			}
 			i++;
 		}
 		if (c == 0)
@@ -51,7 +53,7 @@ char	*ft_strchr(char *str, int c)
 
 char	*ft_strjoin(char *str1, char *str2)
 {
-	char	*newstr=NULL;
+	char	*newstr;
 	size_t	len1;
 	size_t	len2;
 

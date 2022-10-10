@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:43:25 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/10 15:11:41 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/10 15:20:36 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,5 @@ char	*get_next_line(int fd)
 		str_read = ft_alloc_first_line(finalstr[fd]);
 		finalstr[fd] = ft_alloc_next_line(finalstr[fd]);
 	}
-	// if (!finalstr)
-	// 	return (NULL);
 	return (str_read);
 }

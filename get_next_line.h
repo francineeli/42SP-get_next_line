@@ -6,7 +6,7 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:07:01 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/10 14:13:18 by feli-bar         ###   ########.fr       */
+/*   Updated: 2022/10/10 15:32:55 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-
-// # ifndef BUFFER_SIZE
-// #  define BUFFER_SIZE 1
-// # endif
 
 /*---------------GNL---------------*/
 char	*ft_alloc_first_line(char *str);

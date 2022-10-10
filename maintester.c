@@ -6,12 +6,14 @@
 /*   By: feli-bar <feli-bar@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 23:02:22 by feli-bar          #+#    #+#             */
-/*   Updated: 2022/10/06 18:04:15 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/10 15:07:22 by feli-bar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <fcntl.h>
 #include "get_next_line.h"
 
 int	main(int argc, char ** argv)
